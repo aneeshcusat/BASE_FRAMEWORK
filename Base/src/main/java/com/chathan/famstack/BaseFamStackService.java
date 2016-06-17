@@ -1,9 +1,9 @@
-package com.chathan.famstack.rest.services;
+package com.chathan.famstack;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class BaseFamStackServices {
+public class BaseFamStackService {
 	
 	public static Logger logger = null;
 	

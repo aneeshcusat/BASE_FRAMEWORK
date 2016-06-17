@@ -12,16 +12,21 @@
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
+  
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/spring/ApplicationContext.xml</param-value>
+    <param-value>/WEB-INF/spring/ApplicationContext.xml,/WEB-INF/spring/security-applicationContext.xml</param-value>
   </context-param>
+  
+  <!-- Spring -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
   </listener>
+  
+  <!-- jersey -->
   <servlet>
     <servlet-name>FamStack-Servlet</servlet-name>
     <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
@@ -39,25 +44,36 @@
 	</init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-    <servlet>
+  
+  <!-- Admin servlet -->
+  <servlet>
     <servlet-name>FamStack-Admin-Servlet</servlet-name>
     <servlet-class>com.chathan.famstack.servlet.admin.AdminServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>FamStack-Servlet</servlet-name>
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>FamStack-Admin-Servlet</servlet-name>
     <url-pattern>/admin/*</url-pattern>
   </servlet-mapping>
-  <!--  <filter>
-    <filter-name>AuthenticationFilter</filter-name>
-    <filter-class>com.chathan.famstack.filter.RestAuthenticationFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>AuthenticationFilter</filter-name>
-    <url-pattern>/rest/*</url-pattern>
-  </filter-mapping> -->
+  
+  <!-- Spring security -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>springSecurityFilterChain</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

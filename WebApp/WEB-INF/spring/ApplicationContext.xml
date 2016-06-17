@@ -11,11 +11,13 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
  
 	<context:annotation-config />
-    <context:component-scan base-package="com.chathan.famstack.rest.services" />
+    <context:component-scan base-package="com.chathan.famstack" />
     
     <bean id="famStackEntityManager" class="com.chathan.famstack.dataaccess.entity.manager.FamStackEntityManager" />
 	<bean id="userProfileManager" class="com.chathan.famstack.manager.profile.UserProfileManager" />
 	<bean id="objectFactory" class="com.chathan.xsd.profileservices.ObjectFactory" />
+	<bean id="userSecurityContextBinder" class="com.chathan.famstack.rest.security.login.UserSecurityContextBinder" />
+	
 	
 	   <!-- This resolves messages from resource bundles for different locales --> 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

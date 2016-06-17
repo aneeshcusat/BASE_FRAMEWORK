@@ -1,6 +1,6 @@
 --//
 
-Insert into FAM_USERS (USERID,EMAIL,FIRSTNAME,LASTNAME) values (1,'aneesh@aneesh.com','aneesh','kumar');
+Insert into FAM_USERS (ID,FIRSTNAME,LASTNAME,USERNAME,PASSWORD) values (1,'aneesh','kumar','aneesh@aneesh.com','fdccbaa75d6d837deb882cf99');
 
 
 --//@UNDO

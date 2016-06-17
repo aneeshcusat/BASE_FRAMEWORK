@@ -1,5 +1,6 @@
 package com.chathan.famstack.dataaccess.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,17 +9,27 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table (name="fam_users")
+@Table (name="FAM_USERS")
 public class UserEntity {
 	
 	@Id
     @GeneratedValue
+    @Column(name="ID")
 	private Integer userId;
 	
-	@NotEmpty
+	@Column(name="FIRSTNAME")
 	private String firstName;
+	
+	@Column(name="LASTNAME")
 	private String lastName;
-	private String email;
+	
+	@NotEmpty
+	@Column(name="USERNAME")
+	private String userName;
+	
+	@NotEmpty
+	@Column(name="PASSWORD")
+	private String password;
 	
 	public Integer getUserId() {
 		return userId;
@@ -44,13 +55,25 @@ public class UserEntity {
 		this.lastName = lastName;
 	}
 	
-	public String getEmail() {
-		return email;
+	public String getPassword() {
+		return password;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+	
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	
 	
 	
 	

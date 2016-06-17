@@ -1,5 +1,7 @@
 package com.chathan.famstack.rest.services;
 
-public class BaseRestFamStackService extends BaseFamStackServices {
+import com.chathan.famstack.BaseFamStackService;
+
+public class BaseRestFamStackService extends BaseFamStackService {
 
 }
